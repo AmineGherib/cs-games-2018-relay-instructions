@@ -1,4 +1,4 @@
-public class RankOfficers {
+public class RankOfficersTest {
   public static void main(String[] args) {
     Officer hank = new Officer("Hank", new Rank("CREWMAN"));
     Officer tim = new Officer("Tim", new Rank("COMMANDER"));
@@ -8,5 +8,6 @@ public class RankOfficers {
 
     System.out.println(hank);
     System.out.println(hank.compareTo(tim));
+    System.out.println(logging);
   }
 }
