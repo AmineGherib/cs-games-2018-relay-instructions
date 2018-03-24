@@ -25,16 +25,18 @@ public class Officer implements Comparable<Officer> {
     return rank;
   }
 
-  public void sendMessage(Officer otherOfficer, String message, boolean replyAuthorization) {
+  public void sendMessage(Officer otherOfficer, String message, boolean replyAuthorization, Logging logs) {
     if(this.compareTo(otherOfficer) == 1) {
-      otherOfficer.getMessage(message,replyAuthorization, this);
+      logs.addLog(message);
+      otherOfficer.getMessage(message,replyAuthorization, this, logs);
     }
   }
 
-  public void getMessage(String message_received, boolean replyAuthorization, Officer sender) {
+  public void getMessage(String message_received, boolean replyAuthorization, Officer sender, Logging logs) {
     this.message_received = message_received;
     if(replyAuthorization) {
-      this.sendMessage(sender,"Message received.", false);
+      this.sendMessage(sender,"Message received by " + this.toString(), false, logs);
+      logs.addLog("Message received by " + this.toString());
     }
   }
 
